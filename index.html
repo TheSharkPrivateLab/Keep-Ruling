@@ -1,0 +1,58 @@
+﻿<html>
+<head>
+    <title>Index</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="ressources/base.css">
+    <link rel="stylesheet" type="text/css" href="ressources/weather.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+    <script src="constructors.js"></script>
+    <script src="ressources/lib.js"></script>
+    <script src="looped_funcs.js"></script>
+    <script>
+        $(document).ready(function () {
+            var player = new Player("Dummy");
+            display(player);
+            time(player);
+            setInterval(function () {
+                time(player);
+            }, 1000);
+            setInterval(function () {
+                display(player);
+            }, 500);
+
+            $("#clickFood").click(function () {
+                clickFood(player);
+            });
+
+            $("#clickWood").click(function () {
+                clickWood(player);
+            });
+
+            $("#clickStone").click(function () {
+                clickStone(player);
+            });
+
+            $("#vegetables").on('click', ".div-buy", function () {
+                plantPotato(player, this.id);
+            });
+        });
+    </script>
+</head>
+<body>
+    <section class="main-pannels" id="left-pannel">
+        <section id="time" class="weather snow"></section>
+        <section id="ressources-block">
+            <section><button id="clickFood">Harvest</button> Food: <span id="food-block"></span></section>
+            <section><button id="clickWood">Chop</button> Wood: <span id="wood-block"></span></section>
+            <section><button id="clickStone">Mine</button> Stone: <span id="stone-block"></span></section>
+        </section>
+    </section>
+    <section class="main-pannels" id="middle-pannel">
+        <h1>Keep Ruling</h1>
+    </section>
+    <section class="main-pannels" id="right-pannel">
+    </section>
+    <footer></footer>
+</body>
+</html>
