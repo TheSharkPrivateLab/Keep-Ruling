@@ -29,12 +29,12 @@ body {
     left:24%;
 }
 
-#ressources-block {
+.ui-block {
     text-align: left;
-    width:100%;
+    width: 100%;
 }
 
-#ressources-block button {
+.ui-block button {
     width: 50%;
     height: 30px;
     margin: 5px;

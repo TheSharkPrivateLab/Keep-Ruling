@@ -16,7 +16,7 @@
             time(player);
             setInterval(function () {
                 time(player);
-            }, 1000);
+            }, 3000);
             setInterval(function () {
                 display(player);
             }, 500);
@@ -33,6 +33,10 @@
                 clickStone(player);
             });
 
+            $("#clickScience").click(function () {
+                clickScience(player);
+            });
+
             $("#vegetables").on('click', ".div-buy", function () {
                 plantPotato(player, this.id);
             });
@@ -42,14 +46,23 @@
 <body>
     <section class="main-pannels" id="left-pannel">
         <section id="time" class="weather snow"></section>
-        <section id="ressources-block">
-            <section><button id="clickFood">Harvest</button> Food: <span id="food-block"></span></section>
-            <section><button id="clickWood">Chop</button> Wood: <span id="wood-block"></span></section>
-            <section><button id="clickStone">Mine</button> Stone: <span id="stone-block"></span></section>
+        <section class="ui-block" id="ressources-block">
+            <h4>Ressources</h4>
+            <section><button id="clickFood">Harvest</button> Food: <span id="show-food"></span> (<span></span>/s)</section>
+            <section><button id="clickWood">Chop</button> Wood: <span id="show-wood"></span></section>
+            <section><button id="clickStone">Mine</button> Stone: <span id="show-stone"></span></section>
+            <section><button id="clickScience">Research</button> Science: <span id="show-science"></span></section>
+        </section>
+        <section class="ui-block" id="build-block">
+            <h4>Building</h4>
+            <section><button id="buildHouse">Build house</button> House: <span id="show-house"></span></section>
         </section>
     </section>
     <section class="main-pannels" id="middle-pannel">
         <h1>Keep Ruling</h1>
+        <section class="ui-block" id="population-block">
+            <section>Population: <span id="show-population"></span></section>
+        </section>
     </section>
     <section class="main-pannels" id="right-pannel">
     </section>

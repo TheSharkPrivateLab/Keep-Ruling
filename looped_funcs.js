@@ -53,7 +53,9 @@ function time(player) {
 }
 
 function display(player) {
-    $("#food-block").html(player.food);
-    $("#wood-block").html(player.wood);
-    $("#stone-block").html(player.stone);
+    $("#show-food").html(player.food);
+    $("#show-wood").html(player.wood);
+    $("#show-stone").html(player.stone);
+    $("#show-science").html(player.science);
+    $("#show-house").html(player.house);
 }
