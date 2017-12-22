@@ -1,6 +1,5 @@
 function turnToWinter(player) {
-    player.season = 0;
-    player.daySeason = 0;
+    player.monthSeason = 0;
     player.year++;
 }
 
@@ -9,30 +8,27 @@ function time(player) {
     var Season = "";
     var weather = "";
     var color = "";
+    var monthsArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-    player.daySeason += 1;
-    player.dayTotal += 1;
+    player.monthSeason += 1;
+    player.monthTotal += 1;
     switch (player.season) {
         case 0:
             season = Season = "Spring";
-            if (player.daySeason > 93) {
+            if (player.monthSeason == 4) {
                 player.season = 1;
-                player.daySeason = 0;
             }
             break;
         case 1:
-            season = "Summer";
-            Season = "Summer";
-            if (player.daySeason > 94) {
+            season = Season = "Summer";
+            if (player.monthSeason == 7) {
                 player.season = 2;
-                player.daySeason = 0;
             }
             break;
         case 2:
             season = Season = "Autumn";
-            if (player.daySeason > 90) {
+            if (player.monthSeason == 10) {
                 player.season = 3;
-                player.daySeason = 0;
             }
             weather = "weather rain";
             break;
@@ -40,8 +36,11 @@ function time(player) {
             season = Season = "Winter";
             weather = "weather snow";
             color = "background-color:#A5D2FF;";
-            if (player.daySeason > 89) {
+            if (player.monthSeason == 12) {
                 turnToWinter(player);
+            }
+            if (player.monthSeason == 1) {
+                player.season = 0;
             }
             break;
         default:
@@ -49,7 +48,8 @@ function time(player) {
     $("#time").attr("class", weather);
     $("#time").attr("style", color);
     //$("#time").html("<img src=\"ressources/" + Season + ".png\"><p>Jour " + player.dayTotal + ", Ann&eacutee " + player.year + "</p><p>" + season + "</p>");
-    $("#time").html("<p>Jour " + player.dayTotal + ", Ann&eacutee " + player.year + "</p><p>" + season + "</p>");
+    $("#time").html("<p>" + monthsArray[player.monthSeason] + ", Year " + player.year + "</p><p>" + season + "</p>");
+    print(monthsArray[player.monthSeason] + " " + player.monthSeason +" : "+ season);
 }
 
 function display(player) {
@@ -57,5 +57,4 @@ function display(player) {
     $("#show-wood").html(player.wood);
     $("#show-stone").html(player.stone);
     $("#show-science").html(player.science);
-    $("#show-house").html(player.house);
 }
