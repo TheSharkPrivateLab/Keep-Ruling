@@ -12,7 +12,9 @@
     <script>
         $(document).ready(function () {
             var player = new Player("Dummy");
+            initPlayerBuildings(player);
             display(player);
+            displayBuildings(player);
             time(player);
             setInterval(function () {
                 time(player);
@@ -37,6 +39,10 @@
                 clickScience(player);
             });
 
+            $(".build-button").click(function () {
+                build(player, this.id);
+            });
+
             $("#vegetables").on('click', ".div-buy", function () {
                 plantPotato(player, this.id);
             });
@@ -54,8 +60,6 @@
             <section><button id="clickScience">Research</button> Science: <span id="show-science"></span></section>
         </section>
         <section class="ui-block" id="build-block">
-            <h4>Building</h4>
-            <section><button id="buildHouse">Build house</button> House: <span id="show-house"></span></section>
         </section>
     </section>
     <section class="main-pannels" id="middle-pannel">
