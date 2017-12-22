@@ -45,11 +45,23 @@ function time(player) {
             break;
         default:
     }
+    updatePopulation(player);
     $("#time").attr("class", weather);
     $("#time").attr("style", color);
     //$("#time").html("<img src=\"ressources/" + Season + ".png\"><p>Jour " + player.dayTotal + ", Ann&eacutee " + player.year + "</p><p>" + season + "</p>");
     $("#time").html("<p>" + monthsArray[player.monthSeason] + ", Year " + player.year + "</p><p>" + season + "</p>");
-    print(monthsArray[player.monthSeason] + " " + player.monthSeason +" : "+ season);
+}
+
+function updatePopulation(player) {
+    var oldPopulation = player.population;
+    player.population = 0;
+    player.buildings.forEach(function (building) {
+        if (building.type === "Housing") {
+            player.population += building.value * building.amount;
+        }
+    });
+    var monthsArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    $("#event-population").html(monthsArray[player.monthSeason] + " : " + (player.population - oldPopulation).toString() + " new inhabitants have joined your realm this month.", player);
 }
 
 function display(player) {
@@ -57,4 +69,5 @@ function display(player) {
     $("#show-wood").html(player.wood);
     $("#show-stone").html(player.stone);
     $("#show-science").html(player.science);
+    $("#show-population").html(player.population);
 }

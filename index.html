@@ -18,33 +18,17 @@
             time(player);
             setInterval(function () {
                 time(player);
-            }, 3000);
+            }, 10000);
             setInterval(function () {
                 display(player);
             }, 500);
 
-            $("#clickFood").click(function () {
-                clickFood(player);
+            $(".click").click(function () {
+                click(player, this.id);
             });
 
-            $("#clickWood").click(function () {
-                clickWood(player);
-            });
-
-            $("#clickStone").click(function () {
-                clickStone(player);
-            });
-
-            $("#clickScience").click(function () {
-                clickScience(player);
-            });
-
-            $(".build-button").click(function () {
+            $("#build-block").on('click', ".build-button", function () {
                 build(player, this.id);
-            });
-
-            $("#vegetables").on('click', ".div-buy", function () {
-                plantPotato(player, this.id);
             });
         });
     </script>
@@ -54,10 +38,10 @@
         <section id="time" class="weather snow"></section>
         <section class="ui-block" id="ressources-block">
             <h4>Ressources</h4>
-            <section><button id="clickFood">Harvest</button> Food: <span id="show-food"></span> (<span></span>/s)</section>
-            <section><button id="clickWood">Chop</button> Wood: <span id="show-wood"></span></section>
-            <section><button id="clickStone">Mine</button> Stone: <span id="show-stone"></span></section>
-            <section><button id="clickScience">Research</button> Science: <span id="show-science"></span></section>
+            <section><button class="click" id="Food">Harvest</button> Food: <span id="show-food"></span></section>
+            <section><button class="click" id="Wood">Chop</button> Wood: <span id="show-wood"></span></section>
+            <section><button class="click" id="Stone">Mine</button> Stone: <span id="show-stone"></span></section>
+            <section><button class="click" id="Science">Study</button> Science: <span id="show-science"></span></section>
         </section>
         <section class="ui-block" id="build-block">
         </section>
@@ -69,6 +53,8 @@
         </section>
     </section>
     <section class="main-pannels" id="right-pannel">
+        <h4>Events</h4>
+        <section id="event-population"></section>
     </section>
     <footer></footer>
 </body>

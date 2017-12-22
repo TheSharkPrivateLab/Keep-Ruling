@@ -7,31 +7,6 @@ function getRandomInt(max) {
 }
 
 function eventMessage(message, player) {
-    player.chat.unshift([message, 15]);
-}
-
-function getNumberOfPotatos(player) {
-    var x = 0;
-    player.spots.forEach(function (spot) {
-        if (spot !== false) {
-            x++;
-        }
-    });
-    return x;
-}
-
-function getValString(value)
-{
-    const values = {
-        0: "Mis&eacuterable",
-        1: "Acceptable",
-        2: "Excellente",
-        3: "Divine"
-    };
-    if (values[value]) {
-        return values[value];
-    }
-    else {
-        return;
-    }
+    print(message);
+    player.events.unshift([message, 15]);
 }

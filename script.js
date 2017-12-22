@@ -1,20 +1,19 @@
-function clickFood(player) {
-    player.food++;
-    display(player);
-}
-
-function clickWood(player) {
-    player.wood++;
-    display(player);
-}
-
-function clickStone(player) {
-    player.stone++;
-    display(player);
-}
-
-function clickScience(player) {
-    player.science++;
+function click(player, name) {
+    switch (name) {
+        case "Food":
+            player.food++;
+            break;
+        case "Wood":
+            player.wood++;
+            break;
+        case "Stone":
+            player.stone++;
+            break;
+        case "Science":
+            player.science++;
+            break;
+        default:
+    }
     display(player);
 }
 
@@ -41,20 +40,16 @@ function displayBuildings(player) {
 }
 
 function initPlayerBuildings(player) {
-    var house = new Building("House", 0, 10, 5, 0);
+    var house = new Building("House", "Housing", 5, 0, 10, 5, 0);
     player.buildings.push(house);
-    var house = new Building("Mansion", 0, 100, 50, 0);
+    var house = new Building("Mansion", "Housing", 10, 0, 100, 50, 0);
     player.buildings.push(house);
 }
 
 function build(player, buildingName) {
     player.buildings.forEach(function (building) {
         if (building.name === buildingName) {
-            print(building);
-            if (player.food >= building.foodCost &&
-                player.wood >= building.woodCost &&
-                player.stone >= building.stoneCost &&
-                player.science >= building.scienceCost) {
+            if (player.food >= building.foodCost && player.wood >= building.woodCost && player.stone >= building.stoneCost && player.science >= building.scienceCost) {
                 building.amount++;
                 player.food -= building.foodCost;
                 player.wood -= building.woodCost;
